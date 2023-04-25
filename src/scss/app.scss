@@ -60,10 +60,17 @@ body {
 }
 
 .cart {
+  margin: 0 auto;
+  max-width: 800px;
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .content__items {
+    display: block;
   }
 
   .content__title {

@@ -21,6 +21,8 @@ export function Home() {
         setPizza(data);
         setIsLoading(false);
       }
+
+      window.scrollTo(0, 0);
     })();
   }, []);
 
