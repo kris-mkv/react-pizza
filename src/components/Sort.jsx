@@ -1,13 +1,18 @@
 import React from 'react';
 
-export function Sort() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [isSelected, setIsSelected] = React.useState(0);
-  const listItems = ['популярности', 'цене', 'алфавиту'];
-  const selectedItem = listItems[isSelected];
+import { AppContext } from '../context';
 
-  const onClickListItem = (i) => {
-    setIsSelected(i);
+export function Sort() {
+  const { isSelected, setIsSelected } = React.useContext(AppContext);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const sortList = [
+    { name: 'популярности', sortProperty: 'rating' },
+    { name: 'цене', sortProperty: 'price' },
+    { name: 'алфавиту', sortProperty: 'title' },
+  ];
+
+  const onClickListItem = (obj) => {
+    setIsSelected(obj);
     setIsOpen(false);
   };
 
@@ -27,18 +32,18 @@ export function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>{selectedItem}</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{isSelected.name}</span>
       </div>
       {isOpen && (
         <div className="sort__popup">
           <ul>
-            {listItems.map((item, i) => (
+            {sortList.map((item, i) => (
               <li
                 key={i}
-                onClick={() => onClickListItem(i)}
-                className={i === isSelected ? 'active' : ''}
+                onClick={() => onClickListItem(item)}
+                className={item.name === isSelected.name ? 'active' : ''}
               >
-                {item}
+                {item.name}
               </li>
             ))}
           </ul>

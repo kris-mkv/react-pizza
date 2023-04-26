@@ -6,14 +6,29 @@ import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { Skeleton } from '../components/PizzaBlock/Skeleton';
+import { AppContext } from '../context';
 
 export function Home() {
   const [pizza, setPizza] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(0);
+  const [isSelected, setIsSelected] = React.useState({
+    name: 'популярности',
+    sortProperty: 'rating',
+  });
 
   React.useEffect(() => {
     (async () => {
-      const { data, error } = await supabase.from('pizza').select();
+      setIsLoading(true);
+
+      let query = supabase.from('pizza').select();
+      query = query.order(isSelected.sortProperty);
+
+      if (isActive > 0) {
+        query = query.eq('category', isActive);
+      }
+
+      const { data, error } = await query;
 
       if (error) {
         console.error(error);
@@ -24,13 +39,15 @@ export function Home() {
 
       window.scrollTo(0, 0);
     })();
-  }, []);
+  }, [isActive, isSelected]);
 
   return (
     <>
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <AppContext.Provider value={{ isActive, setIsActive, isSelected, setIsSelected }}>
+          <Categories />
+          <Sort />
+        </AppContext.Provider>
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

@@ -1,8 +1,9 @@
 import React from 'react';
 
-export function Categories() {
-  const [isActive, setIsActive] = React.useState(0);
+import { AppContext } from '../context';
 
+export function Categories() {
+  const { isActive, setIsActive } = React.useContext(AppContext);
   const category = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   const onClickCategory = (index) => setIsActive(index);
