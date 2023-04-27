@@ -9,6 +9,7 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton';
 import { AppContext } from '../context';
 
 export function Home() {
+  const { searchValue } = React.useContext(AppContext);
   const [pizza, setPizza] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isActive, setIsActive] = React.useState(0);
@@ -32,6 +33,9 @@ export function Home() {
       } else {
         query = query.order(selectedProperty);
       }
+      if (searchValue) {
+        query = query.ilike('title', `%${searchValue}%`);
+      }
 
       const { data, error } = await query;
 
@@ -44,7 +48,7 @@ export function Home() {
 
       window.scrollTo(0, 0);
     })();
-  }, [isActive, isSelected]);
+  }, [isActive, isSelected, searchValue]);
 
   return (
     <>
