@@ -7,7 +7,8 @@ export function Sort() {
   const [isOpen, setIsOpen] = React.useState(false);
   const sortList = [
     { name: 'популярности', sortProperty: 'rating' },
-    { name: 'цене', sortProperty: 'price' },
+    { name: 'возрастанию цены', sortProperty: 'price' },
+    { name: 'убыванию цены', sortProperty: '-price' },
     { name: 'алфавиту', sortProperty: 'title' },
   ];
 

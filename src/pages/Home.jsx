@@ -22,10 +22,15 @@ export function Home() {
       setIsLoading(true);
 
       let query = supabase.from('pizza').select();
-      query = query.order(isSelected.sortProperty);
+      const selectedProperty = isSelected.sortProperty;
 
       if (isActive > 0) {
         query = query.eq('category', isActive);
+      }
+      if (selectedProperty.includes('-')) {
+        query = query.order(selectedProperty.replace('-', ''), { ascending: false });
+      } else {
+        query = query.order(selectedProperty);
       }
 
       const { data, error } = await query;
