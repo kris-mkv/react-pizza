@@ -16,14 +16,27 @@ export function Sort() {
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = React.useState(false);
+  const sortRef = React.useRef();
 
   const onClickListItem = (obj) => {
     dispatch(setSort(obj));
     setIsOpen(false);
   };
 
+  React.useEffect(() => {
+    const closePopup = (e) => {
+      if (!e.composedPath().includes(sortRef.current)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', closePopup);
+
+    return () => document.body.removeEventListener('click', closePopup);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
