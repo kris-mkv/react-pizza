@@ -16,24 +16,16 @@ function App() {
     <div className="wrapper">
       <AppContext.Provider value={{ searchValue, setSearchValue }}>
         <Header />
-      </AppContext.Provider>
-      <div className="content">
-        <div className="container">
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <AppContext.Provider value={{ searchValue, setSearchValue }}>
-                  <Home />
-                </AppContext.Provider>
-              }
-            />
-            <Route exact path="/cart" element={<Cart />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <div className="content">
+          <div className="container">
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/cart" element={<Cart />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </AppContext.Provider>
     </div>
   );
 }

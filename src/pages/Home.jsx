@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { supabase } from '../config/supabaseClient';
 
@@ -9,24 +10,21 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton';
 import { AppContext } from '../context';
 
 export function Home() {
+  const { categoryId, sort } = useSelector((state) => state.filter);
+  const selectedProperty = sort.sortProperty;
+
   const { searchValue } = React.useContext(AppContext);
   const [pizza, setPizza] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isActive, setIsActive] = React.useState(0);
-  const [isSelected, setIsSelected] = React.useState({
-    name: 'популярности',
-    sortProperty: 'rating',
-  });
 
   React.useEffect(() => {
     (async () => {
       setIsLoading(true);
 
       let query = supabase.from('pizza').select();
-      const selectedProperty = isSelected.sortProperty;
 
-      if (isActive > 0) {
-        query = query.eq('category', isActive);
+      if (categoryId > 0) {
+        query = query.eq('category', categoryId);
       }
       if (selectedProperty.includes('-')) {
         query = query.order(selectedProperty.replace('-', ''), { ascending: false });
@@ -48,15 +46,13 @@ export function Home() {
 
       window.scrollTo(0, 0);
     })();
-  }, [isActive, isSelected, searchValue]);
+  }, [categoryId, selectedProperty, searchValue]);
 
   return (
     <>
       <div className="content__top">
-        <AppContext.Provider value={{ isActive, setIsActive, isSelected, setIsSelected }}>
-          <Categories />
-          <Sort />
-        </AppContext.Provider>
+        <Categories />
+        <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
