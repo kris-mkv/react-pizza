@@ -7,13 +7,12 @@ import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { Skeleton } from '../components/PizzaBlock/Skeleton';
-import { AppContext } from '../context';
 
 export function Home() {
   const { categoryId, sort } = useSelector((state) => state.filter);
   const selectedProperty = sort.sortProperty;
+  const { searchValue } = useSelector((state) => state.search);
 
-  const { searchValue } = React.useContext(AppContext);
   const [pizza, setPizza] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 

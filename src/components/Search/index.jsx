@@ -1,10 +1,34 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import debounce from 'lodash.debounce';
 
 import classes from './Search.module.scss';
-import { AppContext } from '../../context';
+
+import { setSearchValue } from '../../redux/slices/searchSlice';
 
 export function Search() {
-  const { searchValue, setSearchValue } = React.useContext(AppContext);
+  const dispatch = useDispatch();
+
+  const [value, setValue] = React.useState('');
+  const inputRef = React.useRef();
+
+  const updateSearchValue = React.useCallback(
+    debounce((str) => {
+      dispatch(setSearchValue(str));
+    }, 350),
+    [],
+  );
+
+  const changeSearchValue = (e) => {
+    setValue(e.target.value);
+    updateSearchValue(e.target.value);
+  };
+
+  const clearSearchValue = () => {
+    setValue('');
+    dispatch(setSearchValue(''));
+    inputRef.current.focus();
+  };
 
   return (
     <div className={classes.root}>
@@ -29,15 +53,16 @@ export function Search() {
         />
       </svg>
       <input
-        onChange={(e) => setSearchValue(e.target.value)}
+        ref={inputRef}
+        onChange={changeSearchValue}
         className={classes.input}
         type="text"
         placeholder="Поиск пиццы..."
-        value={searchValue}
+        value={value}
       />
-      {searchValue && (
+      {value && (
         <svg
-          onClick={() => setSearchValue('')}
+          onClick={clearSearchValue}
           className={classes.closeIcon}
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
