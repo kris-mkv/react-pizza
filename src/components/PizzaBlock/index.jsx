@@ -1,9 +1,31 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
-  const [activeType, setActiveType] = React.useState(0);
+import { addPizza } from '../../redux/slices/cartSlice';
+
+export function PizzaBlock({ title, price, imageUrl, types, sizes, id }) {
+  const cartItems = useSelector((state) => state.cart.pizza.filter((p) => p.id === id));
+  const dispatch = useDispatch();
+
+  const [activeType, setActiveType] = React.useState('тонкое');
   const [activeSize, setActiveSize] = React.useState(0);
-  const typeName = ['тонкое', 'традиционное'];
+
+  const itemsAmount = cartItems.reduce((num, item) => num + item.count, 0);
+
+  const onClickAddPizza = () => {
+    dispatch(
+      addPizza({
+        id,
+        title,
+        price,
+        imageUrl,
+        productSize: {
+          type: activeType,
+          size: sizes[activeSize],
+        },
+      }),
+    );
+  };
 
   return (
     <div className="pizza-block">
@@ -14,10 +36,10 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
           {types.map((type, i) => (
             <li
               key={i}
-              onClick={() => setActiveType(i)}
-              className={i === activeType ? 'active' : ''}
+              onClick={() => setActiveType(type)}
+              className={type === activeType ? 'active' : ''}
             >
-              {typeName[type]}
+              {type}
             </li>
           ))}
         </ul>
@@ -35,7 +57,7 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <button className="button button--outline button--add">
+        <button onClick={onClickAddPizza} className="button button--outline button--add">
           <svg
             width="12"
             height="12"
@@ -49,7 +71,7 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>0</i>
+          {itemsAmount > 0 && <i>{itemsAmount}</i>}
         </button>
       </div>
     </div>
