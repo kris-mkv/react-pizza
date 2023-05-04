@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addPizza, removePizza } from '../redux/slices/cartSlice';
+import { addPizza, minusPizza, removePizza } from '../redux/slices/cartSlice';
 
 export function CartItem({ id, title, price, imageUrl, type, size, count }) {
   const dispatch = useDispatch();
@@ -9,6 +9,18 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }) {
   const addCartItem = () => {
     dispatch(
       addPizza({
+        id,
+        productSize: {
+          type,
+          size,
+        },
+      }),
+    );
+  };
+
+  const minusCartItem = () => {
+    dispatch(
+      minusPizza({
         id,
         productSize: {
           type,
@@ -44,7 +56,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }) {
         </div>
         <div className="cart__item-count">
           <div
-            onClick={removeCartItem}
+            onClick={minusCartItem}
             className="button button--outline button--circle cart__item-count-minus"
           >
             <svg
@@ -90,7 +102,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }) {
         <div className="cart__item-price">
           <b>{price * count} ₽</b>
         </div>
-        <div className="cart__item-remove">
+        <div onClick={removeCartItem} className="cart__item-remove">
           <div className="button button--outline button--circle">
             <svg
               width="10"
