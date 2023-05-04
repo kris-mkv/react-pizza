@@ -7,6 +7,7 @@ import { Search } from './Search';
 
 export function Header() {
   const { totalPrice, amount } = useSelector((state) => state.cart);
+  const { status } = useSelector((state) => state.pizza);
 
   return (
     <div className="header">
@@ -20,7 +21,7 @@ export function Header() {
             </div>
           </div>
         </Link>
-        <Search />
+        {status !== 'error' && <Search />}
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>{totalPrice} ₽</span>
