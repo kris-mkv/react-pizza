@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CartItem } from '../components/CartItem';
 import { clearPizza } from '../redux/slices/cartSlice';
 import { CartEmpty } from '../components/CartEmpty';
+import { selectCart } from '../redux/slices/cartSlice';
 
 export function Cart() {
-  const { pizza, totalPrice, amount } = useSelector((state) => state.cart);
+  const { pizza, totalPrice, amount } = useSelector(selectCart);
   const dispatch = useDispatch();
 
   if (!amount) {

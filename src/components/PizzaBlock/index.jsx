@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addPizza } from '../../redux/slices/cartSlice';
+import { addPizza, selectPizzaById } from '../../redux/slices/cartSlice';
 
 export function PizzaBlock({ title, price, imageUrl, types, sizes, id }) {
-  const cartItems = useSelector((state) => state.cart.pizza.filter((p) => p.id === id));
+  const cartItems = useSelector(selectPizzaById(id));
   const dispatch = useDispatch();
 
   const [activeType, setActiveType] = React.useState('тонкое');

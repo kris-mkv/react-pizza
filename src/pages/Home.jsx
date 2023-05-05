@@ -5,13 +5,14 @@ import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { Skeleton } from '../components/PizzaBlock/Skeleton';
-import { fetchPizza } from '../redux/slices/pizzaSlice';
+import { fetchPizza, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { NotFoundPizza } from '../components/NotFoundPizza';
+import { selectFilter } from '../redux/slices/filterSlice';
 
 export function Home() {
   const dispatch = useDispatch();
-  const { pizza, status } = useSelector((state) => state.pizza);
-  const { categoryId, sort } = useSelector((state) => state.filter);
+  const { pizza, status } = useSelector(selectPizzaData);
+  const { categoryId, sort } = useSelector(selectFilter);
   const selectedProperty = sort.sortProperty;
   const { searchValue } = useSelector((state) => state.search);
 

@@ -68,6 +68,9 @@ const cartSlice = createSlice({
   },
 });
 
+export const selectCart = (state) => state.cart;
+export const selectPizzaById = (id) => (state) => state.cart.pizza.filter((item) => item.id === id);
+
 export const { addPizza, minusPizza, removePizza, clearPizza } = cartSlice.actions;
 
 export default cartSlice.reducer;
