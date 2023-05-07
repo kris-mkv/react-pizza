@@ -18,7 +18,7 @@ export const fetchPizza = createAsyncThunk('pizza/fetchPizzaData', async (params
     query = query.ilike('title', `%${searchValue}%`);
   }
 
-  return await query;
+  return await query.throwOnError();
 });
 
 const initialState = {
@@ -36,13 +36,13 @@ const pizzaSlice = createSlice({
       state.status = 'pending';
     });
     builder.addCase(fetchPizza.fulfilled, (state, action) => {
-      if (action.payload.data) {
-        state.pizza = action.payload.data;
-        state.status = 'success';
-      } else if (action.payload.error) {
-        state.pizza = [];
-        state.status = 'error';
-      }
+      state.pizza = action.payload.data;
+      state.status = 'success';
+    });
+    builder.addCase(fetchPizza.rejected, (state, action) => {
+      state.pizza = [];
+      state.status = 'error';
+      console.error(action.error);
     });
   },
 });

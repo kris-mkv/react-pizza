@@ -16,6 +16,9 @@ export function Home() {
   const selectedProperty = sort.sortProperty;
   const { searchValue } = useSelector((state) => state.search);
 
+  const pizzaCards = pizza.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />);
+  const pizzaCardsSkeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
+
   React.useEffect(() => {
     dispatch(
       fetchPizza({
@@ -40,9 +43,7 @@ export function Home() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {status === 'pending'
-              ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
-              : pizza.map((pizza, i) => <PizzaBlock key={i} {...pizza} />)}
+            {status === 'pending' ? pizzaCardsSkeletons : pizzaCards}
           </div>
         </>
       )}
