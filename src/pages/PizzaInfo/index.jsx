@@ -14,6 +14,11 @@ export function PizzaInfo() {
     (async () => {
       try {
         const { data } = await supabase.from('pizza').select().eq('id', id).throwOnError();
+
+        if (!data.length) {
+          throw new Error('Такого id не существует');
+        }
+
         setPizza(...data);
       } catch (error) {
         console.error(error);
