@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -90,7 +89,7 @@ export function Cart() {
           <span>Очистить корзину</span>
         </div>
       </div>
-      {pizza.map((item, i) => (
+      {pizza.map((item: any, i: number) => (
         <CartItem key={i} type={item.productSize.type} size={item.productSize.size} {...item} />
       ))}
       <div className="cart__bottom">

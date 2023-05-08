@@ -14,13 +14,17 @@ export function Home() {
   const { pizza, status } = useSelector(selectPizzaData);
   const { categoryId, sort } = useSelector(selectFilter);
   const selectedProperty = sort.sortProperty;
+  // TODO: refactor this
+  // @ts-ignore
   const { searchValue } = useSelector((state) => state.search);
 
-  const pizzaCards = pizza.map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />);
+  const pizzaCards = pizza.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
   const pizzaCardsSkeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
 
   React.useEffect(() => {
     dispatch(
+      // TODO: refactor this
+      // @ts-ignore
       fetchPizza({
         categoryId,
         selectedProperty,
@@ -29,7 +33,7 @@ export function Home() {
     );
 
     window.scrollTo(0, 0);
-  }, [categoryId, selectedProperty, searchValue]);
+  }, [categoryId, selectedProperty, searchValue, dispatch]);
 
   return (
     <>

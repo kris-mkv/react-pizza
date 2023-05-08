@@ -4,14 +4,23 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { addPizza, selectPizzaById } from '../../redux/slices/cartSlice';
 
-export function PizzaBlock({ title, price, imageUrl, types, sizes, id }) {
+type Props = {
+  title: string;
+  price: number;
+  imageUrl: string;
+  types: string[];
+  sizes: number[];
+  id: number;
+};
+
+export function PizzaBlock({ title, price, imageUrl, types, sizes, id }: Props) {
   const cartItems = useSelector(selectPizzaById(id));
   const dispatch = useDispatch();
 
   const [activeType, setActiveType] = React.useState('тонкое');
   const [activeSize, setActiveSize] = React.useState(0);
 
-  const itemsAmount = cartItems.reduce((num, item) => num + item.count, 0);
+  const itemsAmount = cartItems.reduce((value: number, item: any) => value + item.count, 0);
 
   const onClickAddPizza = () => {
     dispatch(

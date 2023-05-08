@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setCategoryId, selectFilter } from '../redux/slices/filterSlice';
@@ -9,16 +8,16 @@ export function Categories() {
   const { categoryId } = useSelector(selectFilter);
   const dispatch = useDispatch();
 
-  const onClickCategory = (index) => dispatch(setCategoryId(index));
+  const onClickCategory = (index: number) => dispatch(setCategoryId(index));
 
   return (
     <div className="categories">
       <ul>
-        {category.map((value, index) => (
+        {category.map((value, i) => (
           <li
-            key={index}
-            onClick={() => onClickCategory(index)}
-            className={index === categoryId ? 'active' : ''}
+            key={i}
+            onClick={() => onClickCategory(i)}
+            className={i === categoryId ? 'active' : ''}
           >
             {value}
           </li>

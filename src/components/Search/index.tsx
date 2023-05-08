@@ -10,16 +10,17 @@ export function Search() {
   const dispatch = useDispatch();
 
   const [value, setValue] = React.useState('');
-  const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const updateSearchValue = React.useCallback(
-    debounce((str) => {
-      dispatch(setSearchValue(str));
-    }, 350),
-    [],
+  const updateSearchValue = React.useMemo(
+    () =>
+      debounce((str: string) => {
+        dispatch(setSearchValue(str));
+      }, 350),
+    [dispatch],
   );
 
-  const changeSearchValue = (e) => {
+  const changeSearchValue = (e: any) => {
     setValue(e.target.value);
     updateSearchValue(e.target.value);
   };
@@ -27,7 +28,7 @@ export function Search() {
   const clearSearchValue = () => {
     setValue('');
     dispatch(setSearchValue(''));
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   return (

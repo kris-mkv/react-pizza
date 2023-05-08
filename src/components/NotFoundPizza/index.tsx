@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './NotFoundPizza.module.scss';
 
 export function NotFoundPizza() {

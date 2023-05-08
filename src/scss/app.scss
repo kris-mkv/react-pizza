@@ -297,10 +297,6 @@ body {
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
-
-      &::after {
-        content: '😕';
-      }
     }
 
     p {

@@ -1,9 +1,18 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addPizza, minusPizza, removePizza } from '../redux/slices/cartSlice';
 
-export function CartItem({ id, title, price, imageUrl, type, size, count }) {
+type Props = {
+  id: number;
+  title: string;
+  price: number;
+  imageUrl: string;
+  type: string;
+  size: number;
+  count: number;
+};
+
+export function CartItem({ id, title, price, imageUrl, type, size, count }: Props) {
   const dispatch = useDispatch();
 
   const addCartItem = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './scss/app.scss';
@@ -13,9 +12,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route exact path="" element={<Home />} />
-        <Route exact path="pizza/:id" element={<PizzaInfo />} />
-        <Route exact path="cart" element={<Cart />} />
+        <Route path="" element={<Home />} />
+        <Route path="pizza/:id" element={<PizzaInfo />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

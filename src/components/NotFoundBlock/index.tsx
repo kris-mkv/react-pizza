@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './NotFoundBlock.module.scss';
 
 export function NotFoundBlock() {
@@ -9,7 +7,7 @@ export function NotFoundBlock() {
       <br />
       <h1>Ничего не найдено</h1>
       <p className={classes.description}>
-        К сожалению данная страница отсутствует в нашем интернет-магазине
+        К сожалению, данная страница отсутствует в нашем интернет-магазине
       </p>
     </div>
   );
