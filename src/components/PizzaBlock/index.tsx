@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { addPizza, selectPizzaById } from '../../redux/slices/cartSlice';
+import { useAppDispatch } from '../../redux/store';
 
 type Props = {
   title: string;
@@ -15,7 +16,7 @@ type Props = {
 
 export function PizzaBlock({ title, price, imageUrl, types, sizes, id }: Props) {
   const cartItems = useSelector(selectPizzaById(id));
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [activeType, setActiveType] = React.useState('тонкое');
   const [activeSize, setActiveSize] = React.useState(0);

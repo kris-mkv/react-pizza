@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
@@ -8,23 +8,21 @@ import { Skeleton } from '../components/PizzaBlock/Skeleton';
 import { fetchPizza, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { NotFoundPizza } from '../components/NotFoundPizza';
 import { selectFilter } from '../redux/slices/filterSlice';
+import { useAppDispatch } from '../redux/store';
+import { selectSearchValue } from '../redux/slices/searchSlice';
 
 export function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { pizza, status } = useSelector(selectPizzaData);
   const { categoryId, sort } = useSelector(selectFilter);
   const selectedProperty = sort.sortProperty;
-  // TODO: refactor this
-  // @ts-ignore
-  const { searchValue } = useSelector((state) => state.search);
+  const { searchValue } = useSelector(selectSearchValue);
 
   const pizzaCards = pizza.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
   const pizzaCardsSkeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
 
   React.useEffect(() => {
     dispatch(
-      // TODO: refactor this
-      // @ts-ignore
       fetchPizza({
         categoryId,
         selectedProperty,

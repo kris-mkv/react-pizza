@@ -5,12 +5,14 @@ import { supabase } from '../../config/supabaseClient';
 
 import classes from './PizzaInfo.module.scss';
 
+type PizzaData = {
+  imageUrl: string;
+  title: string;
+  info: string;
+};
+
 export function PizzaInfo() {
-  const [pizza, setPizza] = React.useState<{
-    imageUrl: string;
-    title: string;
-    info: string;
-  }>();
+  const [pizza, setPizza] = React.useState<PizzaData>();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -19,12 +21,11 @@ export function PizzaInfo() {
       try {
         const { data } = await supabase.from('pizza').select().eq('id', id).throwOnError();
 
-        if (!data) {
+        if (!data.length) {
           throw new Error('Такого id не существует');
         }
 
-        // TODO: fix this
-        // setPizza(...data);
+        setPizza(data[0] as PizzaData);
       } catch (error) {
         console.error(error);
         alert('К сожалению, не получилось загрузить информацию о пицце.');

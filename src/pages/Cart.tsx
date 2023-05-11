@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { CartItem } from '../components/CartItem';
 import { clearPizza } from '../redux/slices/cartSlice';
 import { CartEmpty } from '../components/CartEmpty';
 import { selectCart } from '../redux/slices/cartSlice';
+import { useAppDispatch } from '../redux/store';
 
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   if (!amount) {
     return <CartEmpty />;

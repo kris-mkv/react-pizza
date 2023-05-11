@@ -1,6 +1,5 @@
-import { useDispatch } from 'react-redux';
-
 import { addPizza, minusPizza, removePizza } from '../redux/slices/cartSlice';
+import { useAppDispatch } from '../redux/store';
 
 type Props = {
   id: number;
@@ -13,7 +12,7 @@ type Props = {
 };
 
 export function CartItem({ id, title, price, imageUrl, type, size, count }: Props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addCartItem = () => {
     dispatch(

@@ -1,24 +1,20 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { setSort, selectFilter } from '../redux/slices/filterSlice';
-
-type SortItem = {
-  name: string;
-  sortProperty: string;
-};
+import { setSort, selectFilter, SortItem, SortProperty } from '../redux/slices/filterSlice';
+import { useAppDispatch } from '../redux/store';
 
 const sortList: SortItem[] = [
-  { name: 'популярности', sortProperty: 'rating' },
-  { name: 'возрастанию цены', sortProperty: 'price' },
-  { name: 'убыванию цены', sortProperty: '-price' },
-  { name: 'алфавиту', sortProperty: 'title' },
+  { name: 'популярности', sortProperty: SortProperty.RATING_ASC },
+  { name: 'возрастанию цены', sortProperty: SortProperty.PRICE_ASC },
+  { name: 'убыванию цены', sortProperty: SortProperty.PRICE_DESC },
+  { name: 'алфавиту', sortProperty: SortProperty.TITLE_ASC },
 ];
 
 export function Sort() {
   const { sort } = useSelector(selectFilter);
   const sortName = sort.name;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isOpen, setIsOpen] = React.useState(false);
   const sortRef = React.useRef<HTMLDivElement>(null);
@@ -29,7 +25,7 @@ export function Sort() {
   };
 
   React.useEffect(() => {
-    const closePopup = (e: any) => {
+    const closePopup = (e: MouseEvent) => {
       if (!e.composedPath().includes(sortRef.current)) {
         setIsOpen(false);
       }
