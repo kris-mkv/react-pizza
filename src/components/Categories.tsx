@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { setCategoryId, selectFilter } from '../redux/slices/filterSlice';
@@ -5,11 +6,14 @@ import { useAppDispatch } from '../redux/store';
 
 const category = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
-export function Categories() {
+export const Categories = React.memo(() => {
   const { categoryId } = useSelector(selectFilter);
   const dispatch = useAppDispatch();
 
-  const onClickCategory = (index: number) => dispatch(setCategoryId(index));
+  const onClickCategory = React.useCallback(
+    (index: number) => dispatch(setCategoryId(index)),
+    [dispatch],
+  );
 
   return (
     <div className="categories">
@@ -26,4 +30,4 @@ export function Categories() {
       </ul>
     </div>
   );
-}
+});

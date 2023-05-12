@@ -11,7 +11,7 @@ const sortList: SortItem[] = [
   { name: 'алфавиту', sortProperty: SortProperty.TITLE_ASC },
 ];
 
-export function Sort() {
+export const Sort = React.memo(() => {
   const { sort } = useSelector(selectFilter);
   const sortName = sort.name;
   const dispatch = useAppDispatch();
@@ -71,4 +71,4 @@ export function Sort() {
       )}
     </div>
   );
-}
+});

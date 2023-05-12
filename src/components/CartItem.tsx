@@ -63,7 +63,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
           </p>
         </div>
         <div className="cart__item-count">
-          <div
+          <button
             onClick={minusCartItem}
             className="button button--outline button--circle cart__item-count-minus"
           >
@@ -83,9 +83,9 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
                 fill="#EB5A1E"
               />
             </svg>
-          </div>
+          </button>
           <b>{count}</b>
-          <div
+          <button
             onClick={addCartItem}
             className="button button--outline button--circle cart__item-count-plus"
           >
@@ -105,13 +105,13 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
                 fill="#EB5A1E"
               />
             </svg>
-          </div>
+          </button>
         </div>
         <div className="cart__item-price">
           <b>{price * count} ₽</b>
         </div>
-        <div onClick={removeCartItem} className="cart__item-remove">
-          <div className="button button--outline button--circle">
+        <div className="cart__item-remove">
+          <button onClick={removeCartItem} className="button button--outline button--circle">
             <svg
               width="10"
               height="10"
@@ -128,7 +128,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
                 fill="#EB5A1E"
               />
             </svg>
-          </div>
+          </button>
         </div>
       </div>
     </div>
