@@ -6,6 +6,7 @@ import { clearPizza } from '../redux/cart/slice';
 import { CartEmpty } from '../components/CartEmpty';
 import { useAppDispatch } from '../redux/store';
 import { selectCart } from '../redux/cart/selectors';
+import { GoBackButton } from '../components/GoBackButton';
 
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);
@@ -105,23 +106,8 @@ export function Cart() {
           </span>
         </div>
         <div className="cart__bottom-buttons">
-          <Link to="/" className="button button--outline button--add go-back-btn">
-            <svg
-              width="8"
-              height="14"
-              viewBox="0 0 8 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 13L1 6.93015L6.86175 1"
-                stroke="#D3D3D3"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span>Вернуться назад</span>
+          <Link to="/">
+            <GoBackButton />
           </Link>
           <div className="button pay-btn">
             <span>Оплатить сейчас</span>
