@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { CartItem } from '../components/CartItem';
-import { clearPizza } from '../redux/slices/cartSlice';
+import { clearPizza } from '../redux/cart/slice';
 import { CartEmpty } from '../components/CartEmpty';
-import { selectCart } from '../redux/slices/cartSlice';
 import { useAppDispatch } from '../redux/store';
+import { selectCart } from '../redux/cart/selectors';
 
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);

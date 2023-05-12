@@ -1,4 +1,4 @@
-import { addPizza, minusPizza, removePizza } from '../redux/slices/cartSlice';
+import { addPizza, minusPizza, removePizza } from '../redux/cart/slice';
 import { useAppDispatch } from '../redux/store';
 
 type Props = {

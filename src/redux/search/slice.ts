@@ -1,10 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '../store';
-
-interface SearchSliceState {
-  searchValue: string;
-}
+import { SearchSliceState } from './types';
 
 const initialState: SearchSliceState = {
   searchValue: '',
@@ -19,8 +15,6 @@ const searchSlice = createSlice({
     },
   },
 });
-
-export const selectSearchValue = (state: RootState) => state.search;
 
 export const { setSearchValue } = searchSlice.actions;
 

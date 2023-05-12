@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { addPizza, selectPizzaById } from '../../redux/slices/cartSlice';
 import { useAppDispatch } from '../../redux/store';
+import { selectPizzaById } from '../../redux/cart/selectors';
+import { addPizza } from '../../redux/cart/slice';
 
 type Props = {
   title: string;

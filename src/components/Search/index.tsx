@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 
 import classes from './Search.module.scss';
 
-import { setSearchValue } from '../../redux/slices/searchSlice';
+import { setSearchValue } from '../../redux/search/slice';
 import { useAppDispatch } from '../../redux/store';
 
 export function Search() {

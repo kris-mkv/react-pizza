@@ -1,23 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { RootState } from '../store';
-
-// TODO: Check all cartSlice
-type PizzaItem = {
-  id: number;
-  price?: number;
-  productSize: {
-    type: number;
-    size: number;
-  };
-  count?: number;
-};
-
-interface CartSliceState {
-  pizza: PizzaItem[];
-  totalPrice: number;
-  amount: number;
-}
+import { CartSliceState, PizzaItem } from './types';
 
 const initialState: CartSliceState = {
   pizza: [],
@@ -86,10 +69,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-export const selectCart = (state: RootState) => state.cart;
-export const selectPizzaById = (id: number) => (state: RootState) =>
-  state.cart.pizza.filter((item) => item.id === id);
 
 export const { addPizza, minusPizza, removePizza, clearPizza } = cartSlice.actions;
 

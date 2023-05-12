@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 
 import logo from '../assets/icons/logo.svg';
 import { Search } from './Search';
-import { selectCart } from '../redux/slices/cartSlice';
-import { selectPizzaData } from '../redux/slices/pizzaSlice';
+import { selectCart } from '../redux/cart/selectors';
+import { selectPizzaData } from '../redux/pizza/selectors';
 
 export function Header() {
   const location = useLocation();

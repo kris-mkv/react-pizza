@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { setSort, selectFilter, SortItem, SortProperty } from '../redux/slices/filterSlice';
 import { useAppDispatch } from '../redux/store';
+import { SortItem, SortProperty } from '../redux/filter/types';
+import { selectFilter } from '../redux/filter/selectors';
+import { setSort } from '../redux/filter/slice';
 
 const sortList: SortItem[] = [
   { name: 'популярности', sortProperty: SortProperty.RATING_ASC },

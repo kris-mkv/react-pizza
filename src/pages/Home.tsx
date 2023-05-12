@@ -5,11 +5,12 @@ import { Categories } from '../components/Categories';
 import { Sort } from '../components/Sort';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { Skeleton } from '../components/PizzaBlock/Skeleton';
-import { fetchPizza, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { NotFoundPizza } from '../components/NotFoundPizza';
-import { selectFilter } from '../redux/slices/filterSlice';
 import { useAppDispatch } from '../redux/store';
-import { selectSearchValue } from '../redux/slices/searchSlice';
+import { selectPizzaData } from '../redux/pizza/selectors';
+import { selectFilter } from '../redux/filter/selectors';
+import { selectSearchValue } from '../redux/search/selectors';
+import { fetchPizza } from '../redux/pizza/asyncActions';
 
 export function Home() {
   const dispatch = useAppDispatch();

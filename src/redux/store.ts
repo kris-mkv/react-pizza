@@ -12,10 +12,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import filter from './slices/filterSlice';
-import search from './slices/searchSlice';
-import cart from './slices/cartSlice';
-import pizza from './slices/pizzaSlice';
+import filter from './filter/slice';
+import search from './search/slice';
+import cart from './cart/slice';
+import pizza from './pizza/slice';
 
 const rootReducer = combineReducers({
   filter,
