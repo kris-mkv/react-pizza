@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../../config/supabaseClient';
 
 import classes from './PizzaInfo.module.scss';
-import { GoBackButton } from '../../components/GoBackButton';
+import { GoBackButton } from '../../components';
 
 type PizzaData = {
   imageUrl: string;

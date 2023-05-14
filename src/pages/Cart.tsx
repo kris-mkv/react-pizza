@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { CartItem } from '../components/CartItem';
-import { clearPizza } from '../redux/cart/slice';
-import { CartEmpty } from '../components/CartEmpty';
+import { CartItem, CartEmpty, GoBackButton } from '../components';
+
 import { useAppDispatch } from '../redux/store';
+import { clearPizza } from '../redux/cart/slice';
 import { selectCart } from '../redux/cart/selectors';
-import { GoBackButton } from '../components/GoBackButton';
 
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);

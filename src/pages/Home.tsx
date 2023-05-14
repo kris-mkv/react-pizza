@@ -1,11 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Categories } from '../components/Categories';
-import { Sort } from '../components/Sort';
-import { PizzaBlock } from '../components/PizzaBlock';
-import { Skeleton } from '../components/PizzaBlock/Skeleton';
-import { NotFoundPizza } from '../components/NotFoundPizza';
+import { Categories, Sort, PizzaBlock, Skeleton, NotFoundPizza } from '../components';
+
 import { useAppDispatch } from '../redux/store';
 import { selectPizzaData } from '../redux/pizza/selectors';
 import { selectFilter } from '../redux/filter/selectors';

@@ -2,7 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import logo from '../assets/icons/logo.svg';
-import { Search } from './Search';
+import { Search } from './';
+
 import { selectCart } from '../redux/cart/selectors';
 import { selectPizzaData } from '../redux/pizza/selectors';
 
