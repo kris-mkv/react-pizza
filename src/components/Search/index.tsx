@@ -2,9 +2,9 @@ import React from 'react';
 import debounce from 'lodash.debounce';
 
 import classes from './Search.module.scss';
-
 import { setSearchValue } from '../../redux/search/slice';
 import { useAppDispatch } from '../../redux/store';
+import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
 
 export function Search() {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ export function Search() {
       debounce((str: string) => {
         dispatch(setSearchValue(str));
       }, 350),
-    [dispatch],
+    [dispatch]
   );
 
   const changeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,26 +33,9 @@ export function Search() {
 
   return (
     <div className={classes.root}>
-      <svg className={classes.searchIcon} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-        <title />
-        <path
-          d="M221.09,64A157.09,157.09,0,1,0,378.18,221.09,157.1,157.1,0,0,0,221.09,64Z"
-          style={{ fill: 'none', stroke: '#000', strokeMiterlimit: 10, strokeWidth: '32px' }}
-        />
-        <line
-          style={{
-            fill: 'none',
-            stroke: '#000',
-            strokeLinecap: 'round',
-            strokeMiterlimit: 10,
-            strokeWidth: '32px',
-          }}
-          x1="338.29"
-          x2="448"
-          y1="338.29"
-          y2="448"
-        />
-      </svg>
+      <div className={classes.searchIcon}>
+        <GlobalSvgSelector id="search" />
+      </div>
       <input
         ref={inputRef}
         onChange={changeSearchValue}
@@ -62,42 +45,9 @@ export function Search() {
         value={value}
       />
       {value && (
-        <svg
-          onClick={clearSearchValue}
-          className={classes.closeIcon}
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title />
-          <g id="cross">
-            <line
-              style={{
-                fill: 'none',
-                stroke: '#000',
-                strokeLinecap: 'round',
-                strokeLinejoin: 'round',
-                strokeWidth: '2px',
-              }}
-              x1="7"
-              x2="25"
-              y1="7"
-              y2="25"
-            />
-            <line
-              style={{
-                fill: 'none',
-                stroke: '#000',
-                strokeLinecap: 'round',
-                strokeLinejoin: 'round',
-                strokeWidth: '2px',
-              }}
-              x1="7"
-              x2="25"
-              y1="25"
-              y2="7"
-            />
-          </g>
-        </svg>
+        <button className={classes.closeIcon} onClick={clearSearchValue}>
+          <GlobalSvgSelector id="close" />
+        </button>
       )}
     </div>
   );

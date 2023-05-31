@@ -18,6 +18,7 @@
 
   &__logo {
     display: flex;
+    align-items: center;
     margin-right: 25px;
 
     @media (max-width: 700px) {
@@ -31,7 +32,7 @@
       }
     }
 
-    img {
+    svg {
       margin-right: 15px;
     }
 

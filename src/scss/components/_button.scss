@@ -8,8 +8,7 @@
   min-width: 100px;
   text-align: center;
   cursor: pointer;
-  transition: background-color $duration ease-in-out,
-    border-color $duration ease-in-out;
+  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
 
@@ -115,7 +114,7 @@
 
     i {
       display: inline-block;
-      border-radius: 30px;
+      border-radius: 50%;
       background-color: $orange;
       color: #fff;
       font-weight: 600;
@@ -124,9 +123,6 @@
       font-style: normal;
       font-size: 13px;
       line-height: 22px;
-      position: relative;
-      top: -1px;
-      left: 3px;
     }
   }
 

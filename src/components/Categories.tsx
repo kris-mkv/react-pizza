@@ -13,7 +13,7 @@ export const Categories = React.memo(() => {
 
   const onClickCategory = React.useCallback(
     (index: number) => dispatch(setCategoryId(index)),
-    [dispatch],
+    [dispatch]
   );
 
   return (
