@@ -22,5 +22,5 @@ export const fetchPizza = createAsyncThunk(
     }
 
     return await query.throwOnError();
-  },
+  }
 );

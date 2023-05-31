@@ -1,8 +1,10 @@
 export type PizzaItem = {
   id: number;
+  title?: string;
+  imageUrl?: string;
   price?: number;
   productSize: {
-    type: number;
+    type: string;
     size: number;
   };
   count?: number;

@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { CartSliceState, PizzaItem } from './types';
+import { findPizza } from '../../utils/findPizza';
 
 const initialState: CartSliceState = {
   pizza: [],
@@ -8,21 +9,11 @@ const initialState: CartSliceState = {
   amount: 0,
 };
 
-const findPizza = (state: CartSliceState, obj: PizzaItem) => {
-  return state.pizza.find((item) => {
-    if (item.id === obj.id) {
-      return JSON.stringify(item.productSize) === JSON.stringify(obj.productSize);
-    } else {
-      return false;
-    }
-  });
-};
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addPizza(state, action) {
+    addPizza(state, action: PayloadAction<PizzaItem>) {
       const result = findPizza(state, action.payload);
 
       if (result) {
@@ -37,7 +28,7 @@ const cartSlice = createSlice({
       state.totalPrice = state.pizza.reduce((sum, item) => item.price * item.count + sum, 0);
       state.amount = state.pizza.reduce((num, item) => item.count + num, 0);
     },
-    minusPizza(state, action) {
+    minusPizza(state, action: PayloadAction<PizzaItem>) {
       const result = findPizza(state, action.payload);
       const indexOfResult = state.pizza.indexOf(result);
 
@@ -54,7 +45,7 @@ const cartSlice = createSlice({
         minusIndicators();
       }
     },
-    removePizza(state, action) {
+    removePizza(state, action: PayloadAction<PizzaItem>) {
       const result = findPizza(state, action.payload);
       const indexOfResult = state.pizza.indexOf(result);
 
