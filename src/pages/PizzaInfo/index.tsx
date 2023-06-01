@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { supabase } from '../../config/supabaseClient';
-
 import s from './PizzaInfo.module.scss';
 import { GoBackButton } from '../../components';
 

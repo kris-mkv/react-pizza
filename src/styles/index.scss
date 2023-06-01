@@ -1,7 +1,7 @@
 @import './variables';
 @import 'libs/normalize';
 
-@import 'components/all';
+@import './button.scss';
 
 body {
   background: $background;

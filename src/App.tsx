@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './styles/index.scss';
-
 import { Home } from './pages/Home';
 import { MainLayout } from './layouts/MainLayout';
 
