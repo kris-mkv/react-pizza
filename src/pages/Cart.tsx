@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import { CartItem, CartEmpty, GoBackButton } from '../components';
 import { GlobalSvgSelector } from '../assets/icons/global/GlobalSvgSelector';
-
 import { useAppDispatch } from '../redux/store';
 import { clearPizza } from '../redux/cart/slice';
 import { selectCart } from '../redux/cart/selectors';

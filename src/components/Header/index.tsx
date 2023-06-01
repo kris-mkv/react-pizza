@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { Search } from './Search';
-import { selectCart } from '../redux/cart/selectors';
-import { selectPizzaData } from '../redux/pizza/selectors';
-import { GlobalSvgSelector } from '../assets/icons/global/GlobalSvgSelector';
+import { Search } from '../Search';
+import { selectCart } from '../../redux/cart/selectors';
+import { selectPizzaData } from '../../redux/pizza/selectors';
+import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
+import s from './Header.module.scss';
 
 export function Header() {
   const location = useLocation();
@@ -12,12 +13,12 @@ export function Header() {
   const { status } = useSelector(selectPizzaData);
 
   return (
-    <div className="header">
-      <div className="container">
+    <div className={s.root}>
+      <div className={s.container}>
         <Link to="/">
-          <div className="header__logo">
+          <div className={s.logo}>
             <GlobalSvgSelector id="logo" />
-            <div>
+            <div className={s.mainInfo}>
               <h1>React Pizza</h1>
               <p>самая вкусная пицца во вселенной</p>
             </div>
@@ -27,10 +28,10 @@ export function Header() {
         {location.pathname !== '/cart' && (
           <>
             {status !== 'error' && <Search />}
-            <div className="header__cart">
-              <Link to="/cart" className="button button--cart">
+            <div>
+              <Link to="/cart" className={`button ${s.buttonCart}`}>
                 <span>{totalPrice} ₽</span>
-                <div className="button__delimiter"></div>
+                <div className={s.delimiter}></div>
                 <GlobalSvgSelector id="cart" />
                 <span>{amount}</span>
               </Link>

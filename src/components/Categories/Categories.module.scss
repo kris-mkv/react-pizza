@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+@import '../../styles/libs/normalize';
+
+.root {
+  overflow-x: auto;
+}
+
+.list {
+  display: flex;
+}
+
+.listItem {
+  padding: 13px 30px;
+  margin-right: 10px;
+  font-weight: bold;
+  background: #f9f9f9;
+  border-radius: 30px;
+  transition: background 0.1s ease-in-out;
+  cursor: pointer;
+  @include noselect();
+
+  &:hover {
+    background: darken(#f9f9f9, 2%);
+  }
+
+  &:active {
+    background: darken(#f9f9f9, 5%);
+  }
+
+  &.active {
+    background: #282828;
+    color: #fff;
+  }
+}

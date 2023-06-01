@@ -4,59 +4,33 @@
 @import 'components/all';
 
 body {
-  background-color: $background;
+  background: $background;
 }
 
-.wrapper {
-  width: calc(100vw - 100px);
-  height: 100%;
-  background-color: #fff;
-  margin: 50px auto;
-  border-radius: 10px;
-  max-width: 1400px;
+.content__title {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 38px;
 }
 
-.content {
-  padding: 40px 0;
-
-  &__title {
-    margin-top: 60px;
-    margin-bottom: 50px;
-    display: flex;
-    align-items: center;
-    font-weight: 800;
-    font-size: 38px;
-  }
-
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    place-items: center;
-    row-gap: 65px;
-    column-gap: 35px;
-  }
-
-  &__top {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
+.content__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  place-items: center;
+  row-gap: 65px;
+  column-gap: 35px;
 }
 
-.container {
-  width: $container-width;
-  margin: 0 auto;
-
-  &--cart {
-    max-width: 820px;
-    margin: 90px auto;
-    .content__title {
-      margin: 0;
-    }
-  }
+.content__top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .cart {
@@ -219,7 +193,7 @@ body {
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
-          background-color: darken($color: $gray-line, $amount: 80);
+          background: darken($color: $gray-line, $amount: 80);
         }
       }
     }
@@ -257,7 +231,7 @@ body {
     }
   }
 
-  &--empty {
+  &__empty {
     margin: 0 auto;
     width: 560px;
     text-align: center;
@@ -285,7 +259,7 @@ body {
       margin: 45px auto 60px;
     }
 
-    .button--black {
+    .button__black {
       padding: 12px 0 14px;
       width: 230px;
       margin: 0 auto;

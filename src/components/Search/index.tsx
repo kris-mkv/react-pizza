@@ -1,7 +1,7 @@
 import React from 'react';
 import debounce from 'lodash.debounce';
 
-import classes from './Search.module.scss';
+import s from './Search.module.scss';
 import { setSearchValue } from '../../redux/search/slice';
 import { useAppDispatch } from '../../redux/store';
 import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
@@ -32,20 +32,20 @@ export function Search() {
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.searchIcon}>
+    <div className={s.root}>
+      <div className={s.searchIcon}>
         <GlobalSvgSelector id="search" />
       </div>
       <input
         ref={inputRef}
         onChange={changeSearchValue}
-        className={classes.input}
+        className={s.input}
         type="text"
         placeholder="Поиск пиццы..."
         value={value}
       />
       {value && (
-        <button className={classes.closeIcon} onClick={clearSearchValue}>
+        <button className={s.closeIcon} onClick={clearSearchValue}>
           <GlobalSvgSelector id="close" />
         </button>
       )}

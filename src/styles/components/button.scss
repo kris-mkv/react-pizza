@@ -1,0 +1,120 @@
+@import '../variables';
+
+.button {
+  padding: 10px 20px;
+  min-width: 100px;
+  display: inline-block;
+  background: $orange;
+  text-align: center;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: background $duration ease-in-out, border-color $duration ease-in-out;
+  cursor: pointer;
+  @include noselect();
+
+  &,
+  span {
+    color: #fff;
+  }
+
+  i,
+  span,
+  path,
+  svg {
+    transition: all $duration ease-in-out;
+  }
+
+  &:hover {
+    background: darken($orange, 8%);
+  }
+
+  &:active {
+    background: darken($orange, 12%);
+    transform: translateY(1px);
+  }
+
+  &__circle {
+    padding: 0;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+  }
+
+  &__black {
+    background: $black;
+
+    &:hover,
+    &:active {
+      background: lighten($color: $black, $amount: 10);
+    }
+  }
+
+  &__outline {
+    background: #fff;
+    border-color: $orange;
+    &,
+    span {
+      color: $orange;
+    }
+
+    svg {
+      path {
+        fill: $orange;
+      }
+    }
+
+    &:hover {
+      background: $orange;
+
+      &,
+      span {
+        color: #fff;
+      }
+
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+
+    &:active {
+      background: darken($orange, 8%);
+    }
+  }
+
+  &__add {
+    svg {
+      margin-right: 2px;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    &:hover {
+      i {
+        background: #fff;
+        color: $orange;
+      }
+    }
+
+    i {
+      height: 22px;
+      width: 22px;
+      display: inline-block;
+      background: $orange;
+      color: #fff;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 13px;
+      line-height: 22px;
+      border-radius: 50%;
+    }
+  }
+}

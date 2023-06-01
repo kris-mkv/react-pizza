@@ -1,0 +1,80 @@
+@import '../../styles/variables';
+
+.root {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+}
+
+.container {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 15px;
+  }
+}
+
+.mainInfo {
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 1%;
+    font-size: 24px;
+    font-weight: 800;
+    color: #181818;
+  }
+
+  p {
+    color: #7b7b7b;
+  }
+}
+
+.buttonCart {
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  line-height: 23px;
+
+  span {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  svg {
+    margin-right: 8px;
+    margin-bottom: 1px;
+  }
+}
+
+.delimiter {
+  margin: 0 14px;
+  height: 25px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 700px) {
+  .container {
+    justify-content: center;
+  }
+
+  .logo {
+    margin-right: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .mainInfo {
+    text-align: center;
+  }
+}

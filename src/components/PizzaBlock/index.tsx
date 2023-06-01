@@ -75,7 +75,7 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes, id }: Props) 
         <div className="pizza-block__price">от {price} ₽</div>
         <button
           onClick={onClickAddPizza}
-          className="pizza-block__button button button--outline button--add"
+          className="pizza-block__button button button__outline button__add"
         >
           <GlobalSvgSelector id="plus" />
           <span>Добавить</span>

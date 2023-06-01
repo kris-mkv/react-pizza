@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { Categories, Sort, PizzaBlock, Skeleton, NotFoundPizza } from '../components';
-
 import { useAppDispatch } from '../redux/store';
 import { selectPizzaData } from '../redux/pizza/selectors';
 import { selectFilter } from '../redux/filter/selectors';
@@ -25,7 +24,7 @@ export function Home() {
         categoryId,
         selectedProperty,
         searchValue,
-      }),
+      })
     );
 
     window.scrollTo(0, 0);

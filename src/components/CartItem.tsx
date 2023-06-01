@@ -66,14 +66,14 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
         <div className="cart__item-count">
           <button
             onClick={minusCartItem}
-            className="button button--outline button--circle cart__item-count-minus"
+            className="button button__outline button__circle cart__item-count-minus"
           >
             <GlobalSvgSelector id="minus" />
           </button>
           <b>{count}</b>
           <button
             onClick={addCartItem}
-            className="button button--outline button--circle cart__item-count-plus"
+            className="button button__outline button__circle cart__item-count-plus"
           >
             <GlobalSvgSelector id="plus" />
           </button>
@@ -82,7 +82,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
           <b>{price * count} ₽</b>
         </div>
         <div className="cart__item-remove">
-          <button onClick={removeCartItem} className="button button--outline button--circle">
+          <button onClick={removeCartItem} className="button button__outline button__circle">
             <GlobalSvgSelector id="cross" />
           </button>
         </div>

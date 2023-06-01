@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+
+.root {
+  margin: 50px auto;
+  height: 100%;
+  width: calc(100vw - 100px);
+  max-width: 1400px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.content {
+  padding: 40px 0;
+}
+
+.container {
+  @include container;
+}

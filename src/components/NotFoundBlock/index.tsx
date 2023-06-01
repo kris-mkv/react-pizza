@@ -1,12 +1,12 @@
-import classes from './NotFoundBlock.module.scss';
+import s from './NotFoundBlock.module.scss';
 
 export function NotFoundBlock() {
   return (
-    <div className={classes.root}>
+    <div className={s.root}>
       <span>😕</span>
       <br />
       <h1>Ничего не найдено</h1>
-      <p className={classes.description}>
+      <p className={s.description}>
         К сожалению, данная страница отсутствует в нашем интернет-магазине
       </p>
     </div>

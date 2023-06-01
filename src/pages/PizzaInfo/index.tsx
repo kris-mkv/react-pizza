@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { supabase } from '../../config/supabaseClient';
 
-import classes from './PizzaInfo.module.scss';
+import s from './PizzaInfo.module.scss';
 import { GoBackButton } from '../../components';
 
 type PizzaData = {
@@ -40,9 +40,9 @@ export function PizzaInfo() {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={s.root}>
       <img src={pizza.imageUrl} alt="Pizza" />
-      <div className={classes.info}>
+      <div className={s.info}>
         <h2>{pizza.title}</h2>
         <h3>Состав</h3>
         <p>{pizza.info}</p>
