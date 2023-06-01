@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Categories, Sort, PizzaBlock, Skeleton, NotFoundPizza } from '../components';
-import { useAppDispatch } from '../redux/store';
-import { selectPizzaData } from '../redux/pizza/selectors';
-import { selectFilter } from '../redux/filter/selectors';
-import { selectSearchValue } from '../redux/search/selectors';
-import { fetchPizza } from '../redux/pizza/asyncActions';
+import { Categories, Sort, PizzaBlock, Skeleton, NotFoundPizza } from '../../components';
+import { useAppDispatch } from '../../redux/store';
+import { selectPizzaData } from '../../redux/pizza/selectors';
+import { selectFilter } from '../../redux/filter/selectors';
+import { selectSearchValue } from '../../redux/search/selectors';
+import { fetchPizza } from '../../redux/pizza/asyncActions';
+import s from './Home.module.scss';
 
 export function Home() {
   const dispatch = useAppDispatch();
@@ -36,14 +37,12 @@ export function Home() {
         <NotFoundPizza />
       ) : (
         <>
-          <div className="content__top">
+          <div className={s.topBlock}>
             <Categories />
             <Sort />
           </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            {status === 'pending' ? pizzaCardsSkeletons : pizzaCards}
-          </div>
+          <h2 className={s.title}>Все пиццы</h2>
+          <div className={s.items}>{status === 'pending' ? pizzaCardsSkeletons : pizzaCards}</div>
         </>
       )}
     </>

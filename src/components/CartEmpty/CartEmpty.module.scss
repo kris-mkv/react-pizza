@@ -1,0 +1,31 @@
+.root {
+  margin: 0 auto;
+  width: 560px;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 10px;
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 145.4%;
+    letter-spacing: 0.01em;
+    color: #777777;
+  }
+
+  img {
+    margin: 45px auto 60px;
+    width: 300px;
+    display: block;
+  }
+}
+
+.button {
+  padding: 12px 0 14px;
+  margin: 0 auto;
+  width: 230px;
+  font-weight: 600;
+  font-size: 18px;
+}

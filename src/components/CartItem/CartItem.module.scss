@@ -1,0 +1,104 @@
+@import '../../styles/variables.scss';
+
+.root {
+  display: block;
+}
+
+.item {
+  padding-top: 30px;
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid $gray-line;
+}
+
+.itemImage {
+  margin-right: 15px;
+  width: 10%;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+  }
+
+  p {
+    font-size: 18px;
+    color: #8d8d8d;
+  }
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 13%;
+
+  b {
+    font-size: 22px;
+  }
+}
+
+.minus {
+  svg {
+    path:first-of-type {
+      display: none;
+    }
+  }
+}
+
+.price {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  b {
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+  }
+}
+
+.remove {
+  width: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button {
+  border-color: darken($color: $gray-line, $amount: 10);
+
+  svg {
+    position: relative;
+    height: 11.5px;
+    width: 11.5px;
+    transform: rotate(45deg);
+
+    path {
+      fill: darken($color: $gray-line, $amount: 15);
+    }
+  }
+
+  &:hover,
+  &:active {
+    background: darken($color: $gray-line, $amount: 80);
+    border-color: darken($color: $gray-line, $amount: 80);
+  }
+}

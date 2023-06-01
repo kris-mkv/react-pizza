@@ -1,6 +1,7 @@
-import { GlobalSvgSelector } from '../assets/icons/global/GlobalSvgSelector';
-import { addPizza, minusPizza, removePizza } from '../redux/cart/slice';
-import { useAppDispatch } from '../redux/store';
+import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
+import { addPizza, minusPizza, removePizza } from '../../redux/cart/slice';
+import { useAppDispatch } from '../../redux/store';
+import s from './CartItem.module.scss';
 
 type Props = {
   id: number;
@@ -52,37 +53,37 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
   };
 
   return (
-    <div className="content__items">
-      <div className="cart__item">
-        <div className="cart__item-img">
-          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+    <div className={s.root}>
+      <div className={s.item}>
+        <div className={s.itemImage}>
+          <img src={imageUrl} alt="Pizza" />
         </div>
-        <div className="cart__item-info">
+        <div className={s.info}>
           <h3>{title}</h3>
           <p>
             {type} тесто, {size} см.
           </p>
         </div>
-        <div className="cart__item-count">
+        <div className={s.count}>
           <button
             onClick={minusCartItem}
-            className="button button__outline button__circle cart__item-count-minus"
+            className={`button button__outline button__circle ${s.minus}`}
           >
             <GlobalSvgSelector id="minus" />
           </button>
           <b>{count}</b>
-          <button
-            onClick={addCartItem}
-            className="button button__outline button__circle cart__item-count-plus"
-          >
+          <button onClick={addCartItem} className="button button__outline button__circle">
             <GlobalSvgSelector id="plus" />
           </button>
         </div>
-        <div className="cart__item-price">
+        <div className={s.price}>
           <b>{price * count} ₽</b>
         </div>
-        <div className="cart__item-remove">
-          <button onClick={removeCartItem} className="button button__outline button__circle">
+        <div className={s.remove}>
+          <button
+            onClick={removeCartItem}
+            className={`button button__outline button__circle ${s.button}`}
+          >
             <GlobalSvgSelector id="cross" />
           </button>
         </div>

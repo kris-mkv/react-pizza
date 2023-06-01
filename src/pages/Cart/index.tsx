@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { CartItem, CartEmpty, GoBackButton } from '../components';
-import { GlobalSvgSelector } from '../assets/icons/global/GlobalSvgSelector';
-import { useAppDispatch } from '../redux/store';
-import { clearPizza } from '../redux/cart/slice';
-import { selectCart } from '../redux/cart/selectors';
+import { CartItem, CartEmpty, GoBackButton } from '../../components';
+import { GlobalSvgSelector } from '../../assets/icons/global/GlobalSvgSelector';
+import { useAppDispatch } from '../../redux/store';
+import { clearPizza } from '../../redux/cart/slice';
+import { selectCart } from '../../redux/cart/selectors';
+import s from './Cart.module.scss';
 
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);
@@ -16,13 +17,13 @@ export function Cart() {
   }
 
   return (
-    <div className="cart">
-      <div className="cart__top">
-        <h2 className="content__title">
+    <div className={s.root}>
+      <div className={s.topBlock}>
+        <h2 className={s.title}>
           <GlobalSvgSelector id="cart" />
           Корзина
         </h2>
-        <div onClick={() => dispatch(clearPizza())} className="cart__clear">
+        <div onClick={() => dispatch(clearPizza())} className={s.clear}>
           <GlobalSvgSelector id="trash" />
           <span>Очистить корзину</span>
         </div>
@@ -32,8 +33,8 @@ export function Cart() {
         <CartItem key={i} type={item.productSize.type} size={item.productSize.size} {...item} />
       ))}
 
-      <div className="cart__bottom">
-        <div className="cart__bottom-details">
+      <div className={s.bottomBlock}>
+        <div className={s.details}>
           <span>
             Всего пицц: <b>{amount} шт.</b>
           </span>
@@ -41,11 +42,11 @@ export function Cart() {
             Сумма заказа: <b>{totalPrice} ₽</b>
           </span>
         </div>
-        <div className="cart__bottom-buttons">
+        <div className={s.buttonsBlock}>
           <Link to="/">
             <GoBackButton />
           </Link>
-          <div className="button pay-btn">
+          <div className={`button ${s.payButton}`}>
             <span>Оплатить сейчас</span>
           </div>
         </div>

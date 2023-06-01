@@ -44,18 +44,10 @@
     border-width: 2px;
   }
 
-  &__black {
-    background: $black;
-
-    &:hover,
-    &:active {
-      background: lighten($color: $black, $amount: 10);
-    }
-  }
-
   &__outline {
     background: #fff;
     border-color: $orange;
+
     &,
     span {
       color: $orange;

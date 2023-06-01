@@ -1,0 +1,96 @@
+@import '../../styles/variables.scss';
+@import '../../styles/libs/normalize.scss';
+
+.root {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.topBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+
+  svg {
+    position: relative;
+    top: -2px;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+
+    path {
+      stroke-width: 1.9;
+      stroke: $black;
+    }
+  }
+}
+
+.clear {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @include noselect();
+
+  span {
+    margin-left: 7px;
+    display: inline-block;
+    font-size: 18px;
+    color: #b6b6b6;
+  }
+
+  span,
+  svg,
+  path {
+    transition: all $duration ease-in-out;
+  }
+
+  &:hover {
+    svg {
+      path {
+        stroke: darken($color: #b6b6b6, $amount: 50);
+      }
+    }
+
+    span {
+      color: darken($color: #b6b6b6, $amount: 50);
+    }
+  }
+}
+
+.bottomBlock {
+  margin: 50px 0;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-size: 22px;
+
+    &:last-of-type {
+      b {
+        color: $orange;
+      }
+    }
+  }
+}
+
+.buttonsBlock {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.payButton {
+  padding: 16px;
+  width: 210px;
+  font-size: 16px;
+  font-weight: 600;
+}

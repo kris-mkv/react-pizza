@@ -1,10 +1,6 @@
 .root {
   position: relative;
   margin-right: auto;
-
-  @media (max-width: 700px) {
-    margin-right: 0;
-  }
 }
 
 .input {
@@ -16,10 +12,6 @@
 
   &:focus {
     border: 1px solid rgba(0, 0, 0, 0.3);
-  }
-
-  @media (max-width: 600px) {
-    width: 250px;
   }
 }
 
@@ -44,9 +36,22 @@
 
   svg {
     opacity: 0.3;
+    transition: opacity 0.15s ease-in-out;
 
     &:hover {
       opacity: 0.7;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .input {
+    width: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .root {
+    margin-right: 0;
   }
 }

@@ -1,17 +1,17 @@
 @import '../../styles/variables';
 
 .root {
-  border-bottom: 1px solid $gray-line;
   padding: 40px 0;
+  border-bottom: 1px solid $gray-line;
 }
 
 .container {
-  @include container;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+  @include container;
 }
 
 .logo {
@@ -38,7 +38,7 @@
   }
 }
 
-.buttonCart {
+.cartButton {
   padding: 12px 25px;
   display: flex;
   align-items: center;

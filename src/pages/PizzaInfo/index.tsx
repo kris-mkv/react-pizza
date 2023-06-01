@@ -40,7 +40,7 @@ export function PizzaInfo() {
 
   return (
     <div className={s.root}>
-      <img src={pizza.imageUrl} alt="Pizza" />
+      <img className={s.pizzaImage} src={pizza.imageUrl} alt="Pizza" />
       <div className={s.info}>
         <h2>{pizza.title}</h2>
         <h3>Состав</h3>

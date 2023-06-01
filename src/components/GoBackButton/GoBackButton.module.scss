@@ -1,21 +1,22 @@
 @import '../../styles/variables';
 
 .root {
+  padding: 16px;
+  width: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 210px;
-  padding: 16px;
   border-color: darken($color: $gray-line, $amount: 10);
 
   span {
-    color: darken($color: $gray-line, $amount: 20);
     font-weight: 500;
     font-weight: 600;
+    color: darken($color: $gray-line, $amount: 20);
   }
 
   svg {
     margin-right: 12px;
+
     path {
       fill: transparent;
       stroke-width: 2;

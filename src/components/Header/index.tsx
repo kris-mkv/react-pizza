@@ -29,7 +29,7 @@ export function Header() {
           <>
             {status !== 'error' && <Search />}
             <div>
-              <Link to="/cart" className={`button ${s.buttonCart}`}>
+              <Link to="/cart" className={`button ${s.cartButton}`}>
                 <span>{totalPrice} ₽</span>
                 <div className={s.delimiter}></div>
                 <GlobalSvgSelector id="cart" />

@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+
+.topBlock {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.title {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 38px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  place-items: center;
+  row-gap: 65px;
+  column-gap: 35px;
+}
