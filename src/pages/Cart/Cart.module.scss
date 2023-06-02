@@ -70,6 +70,7 @@
 .details {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
 
   span {
     font-size: 22px;
@@ -86,6 +87,7 @@
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+  gap: 5px;
 }
 
 .payButton {
@@ -93,4 +95,41 @@
   width: 210px;
   font-size: 16px;
   font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .topBlock {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .clear {
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .bottomBlock {
+    margin: 30px 0;
+  }
+
+  .details {
+    flex-wrap: wrap;
+
+    span {
+      font-size: 17px;
+    }
+  }
+
+  .buttonsBlock {
+    button,
+    .payButton {
+      padding: 7px;
+      max-width: 140px;
+    }
+  }
 }

@@ -9,12 +9,13 @@
   margin-top: 30px;
   width: 100%;
   display: flex;
+  gap: 10px;
   border-top: 1px solid $gray-line;
 }
 
 .itemImage {
-  margin-right: 15px;
-  width: 10%;
+  margin-right: 10px;
+  width: 15%;
   display: flex;
   align-items: center;
 
@@ -44,10 +45,10 @@
 }
 
 .count {
+  width: 13%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 13%;
+  gap: 5px;
 
   b {
     font-size: 22px;
@@ -63,7 +64,7 @@
 }
 
 .price {
-  width: 33%;
+  width: 23%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,5 +101,51 @@
   &:active {
     background: darken($color: $gray-line, $amount: 80);
     border-color: darken($color: $gray-line, $amount: 80);
+  }
+}
+
+@media (max-width: 560px) {
+  .item {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .itemImage,
+  .info {
+    margin-bottom: 15px;
+  }
+
+  .itemImage {
+    margin-right: 0;
+    width: 35%;
+    justify-content: center;
+  }
+
+  .info {
+    width: 65%;
+
+    h3 {
+      font-size: 17px;
+      line-height: 20px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .count,
+  .price,
+  .remove {
+    width: 33%;
+
+    b {
+      font-size: 17px;
+    }
+  }
+
+  .count {
+    justify-content: space-evenly;
   }
 }
