@@ -90,11 +90,6 @@
     font-size: 17px;
   }
 
-  .price {
-    font-size: 18px;
-    line-height: 23px;
-  }
-
   .button {
     svg {
       display: none;
@@ -102,7 +97,7 @@
   }
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 680px) and (max-width: 1100px) {
   .root {
     width: 270px;
   }
