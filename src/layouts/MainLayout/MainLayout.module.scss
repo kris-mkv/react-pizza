@@ -16,3 +16,17 @@
 .container {
   @include container;
 }
+
+@media (max-width: 680px) {
+  .root {
+    margin: 10px auto;
+    width: calc(100vw - 20px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .root {
+    margin: 30px auto;
+    width: calc(100vw - 50px);
+  }
+}
