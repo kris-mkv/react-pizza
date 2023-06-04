@@ -45,8 +45,8 @@ export function PizzaInfo() {
         <h2>{pizza.title}</h2>
         <h3>Состав</h3>
         <p>{pizza.info}</p>
-        <Link to="/">
-          <GoBackButton />
+        <Link to="/" className="button-link">
+          <GoBackButton text="Вернуться назад" />
         </Link>
       </div>
     </div>

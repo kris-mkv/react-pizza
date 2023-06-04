@@ -43,8 +43,8 @@ export function Cart() {
           </span>
         </div>
         <div className={s.buttonsBlock}>
-          <Link to="/">
-            <GoBackButton />
+          <Link to="/" className="button-link">
+            <GoBackButton text="Вернуться назад" />
           </Link>
           <div className={`button ${s.payButton}`}>
             <span>Оплатить сейчас</span>

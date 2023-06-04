@@ -9,3 +9,9 @@ $duration: 0.15s;
   margin: 0 auto;
   width: 90%;
 }
+
+@mixin info-block {
+  margin: 0 auto;
+  max-width: 560px;
+  text-align: center;
+}
