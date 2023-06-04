@@ -9,6 +9,15 @@ import { selectSearchValue } from '../../redux/search/selectors';
 import { fetchPizza } from '../../redux/pizza/asyncActions';
 import s from './Home.module.scss';
 
+type PizzaCard = {
+  title: string;
+  price: number;
+  imageUrl: string;
+  types: string[];
+  sizes: number[];
+  id: number;
+};
+
 export function Home() {
   const dispatch = useAppDispatch();
   const { pizza, status } = useSelector(selectPizzaData);
@@ -16,7 +25,7 @@ export function Home() {
   const selectedProperty = sort.sortProperty;
   const { searchValue } = useSelector(selectSearchValue);
 
-  const pizzaCards = pizza.map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
+  const pizzaCards = pizza.map((pizza: PizzaCard) => <PizzaBlock key={pizza.id} {...pizza} />);
   const pizzaCardsSkeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
 
   React.useEffect(() => {

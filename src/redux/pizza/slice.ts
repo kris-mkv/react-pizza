@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { PizzaSliceState, Status } from './types';
 import { fetchPizza } from './asyncActions';
@@ -17,8 +17,7 @@ const pizzaSlice = createSlice({
       state.pizza = [];
       state.status = Status.PENDING;
     });
-    // !Fix: убрать any
-    builder.addCase(fetchPizza.fulfilled, (state, action: PayloadAction<any>) => {
+    builder.addCase(fetchPizza.fulfilled, (state, action) => {
       state.pizza = action.payload.data;
       state.status = Status.SUCCESS;
     });

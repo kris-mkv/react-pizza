@@ -8,22 +8,21 @@ type Props = {
   title: string;
   price: number;
   imageUrl: string;
-  type: string;
-  size: number;
+  productSize: {
+    type: string;
+    size: number;
+  };
   count: number;
 };
 
-export function CartItem({ id, title, price, imageUrl, type, size, count }: Props) {
+export function CartItem({ id, title, price, imageUrl, count, productSize }: Props) {
   const dispatch = useAppDispatch();
 
   const addCartItem = () => {
     dispatch(
       addPizza({
         id,
-        productSize: {
-          type,
-          size,
-        },
+        productSize,
       })
     );
   };
@@ -32,10 +31,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
     dispatch(
       minusPizza({
         id,
-        productSize: {
-          type,
-          size,
-        },
+        productSize,
       })
     );
   };
@@ -44,10 +40,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
     dispatch(
       removePizza({
         id,
-        productSize: {
-          type,
-          size,
-        },
+        productSize,
       })
     );
   };
@@ -61,7 +54,7 @@ export function CartItem({ id, title, price, imageUrl, type, size, count }: Prop
         <div className={s.info}>
           <h3>{title}</h3>
           <p>
-            {type} тесто, {size} см.
+            {productSize.type} тесто, {productSize.size} см.
           </p>
         </div>
         <div className={s.count}>

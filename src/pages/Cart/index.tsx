@@ -8,6 +8,18 @@ import { clearPizza } from '../../redux/cart/slice';
 import { selectCart } from '../../redux/cart/selectors';
 import s from './Cart.module.scss';
 
+type PizzaItem = {
+  id: number;
+  title: string;
+  price: number;
+  imageUrl: string;
+  productSize: {
+    type: string;
+    size: number;
+  };
+  count: number;
+};
+
 export function Cart() {
   const { pizza, totalPrice, amount } = useSelector(selectCart);
   const dispatch = useAppDispatch();
@@ -29,8 +41,8 @@ export function Cart() {
         </div>
       </div>
 
-      {pizza.map((item: any, i: number) => (
-        <CartItem key={i} type={item.productSize.type} size={item.productSize.size} {...item} />
+      {pizza.map((item: PizzaItem, i: number) => (
+        <CartItem key={i} {...item} />
       ))}
 
       <div className={s.bottomBlock}>

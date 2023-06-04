@@ -17,7 +17,7 @@ export enum Status {
 }
 
 export interface PizzaSliceState {
-  pizza: Pizza[];
+  pizza: Pizza[] | object[];
   status: Status;
 }
 
